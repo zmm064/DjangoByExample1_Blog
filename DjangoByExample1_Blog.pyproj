@@ -31,6 +31,9 @@
   <ItemGroup>
     <Compile Include="blog\admin.py" />
     <Compile Include="blog\apps.py" />
+    <Compile Include="blog\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="blog\migrations\__init__.py" />
     <Compile Include="blog\models.py" />
     <Compile Include="blog\tests.py" />
@@ -50,6 +53,7 @@
     <Content Include="blog\templates\blog\base.html" />
     <Content Include="blog\templates\blog\post\detail.html" />
     <Content Include="blog\templates\blog\post\list.html" />
+    <Content Include="blog\templates\blog\post\share.html" />
     <Content Include="blog\templates\pagination.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
