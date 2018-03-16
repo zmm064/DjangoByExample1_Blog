@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from taggit.managers import TaggableManager
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
@@ -25,6 +26,17 @@ class Post(models.Model):
 
     objects = models.Manager()  # 默认的模型管理器
     published = PublishedManager()  # 自定义的模型管理器
+    tags = TaggableManager()
+
+    '''
+    >>> post = Post.objects.get(id=1)
+    >>> post.tags.add('music', 'jazz', 'django')
+    >>> post.tags.all()
+        [<Tag: jazz>, <Tag: django>, <Tag: music>]
+    >>> post.tags.remove('django')
+    >>> post.tags.all()
+        [<Tag: jazz>, <Tag: music>]
+    '''
 
     class Meta:
         ordering = ('-publish',)

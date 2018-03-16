@@ -4,21 +4,31 @@ from django.core.mail import send_mail
 from django.views.generic import ListView
 from .forms import EmailPostForm, CommentForm
 from .models import Post, Comment
+from taggit.models import Tag
 
 
-#def post_list(request):
-#    posts = Post.published.all()
-#    # 分页
-#    paginator = Paginator(posts, 3)
-#    page = request.GET.get('page')
-#    try:
-#        posts = paginator.page(page)
-#    except PageNotAnInteger:
-#        posts = paginator.page(1)
-#    except EmptyPage:
-#        posts = paginator.page(paginator.num_pages)
+def post_list(request, tag_slug=None):
+    posts = Post.published.all()
+    tag = None
+    # 根据标签筛选文章
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        #Since this is a many-to-many relationship, 
+        #we have to filter by tags contained in a given list, 
+        #which in our case contains only one element.
+        posts = posts.filter(tags__in=[tag])
 
-#    return render(request, 'blog/post/list.html', {'posts':posts})
+    # 分页
+    paginator = Paginator(posts, 3)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+    return render(request, 'blog/post/list.html', {'posts':posts, 'tag':tag})
 
 
 class PostListView(ListView):
