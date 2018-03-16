@@ -36,6 +36,12 @@
     </Compile>
     <Compile Include="blog\migrations\__init__.py" />
     <Compile Include="blog\models.py" />
+    <Compile Include="blog\templatetags\blog_tags.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="blog\templatetags\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="blog\tests.py" />
     <Compile Include="blog\urls.py">
       <SubType>Code</SubType>
@@ -52,6 +58,7 @@
     <Content Include="blog\static\css\blog.css" />
     <Content Include="blog\templates\blog\base.html" />
     <Content Include="blog\templates\blog\post\detail.html" />
+    <Content Include="blog\templates\blog\post\latest_posts.html" />
     <Content Include="blog\templates\blog\post\list.html" />
     <Content Include="blog\templates\blog\post\share.html" />
     <Content Include="blog\templates\pagination.html" />
@@ -62,6 +69,7 @@
     <Folder Include="blog\migrations\" />
     <Folder Include="blog\static\" />
     <Folder Include="blog\static\css\" />
+    <Folder Include="blog\templatetags\" />
     <Folder Include="C:\Users\dell\Source\Repos\DjangoByExample1_Blog\blog\static\css\" />
     <Folder Include="blog\templates\" />
     <Folder Include="blog\templates\blog\" />
