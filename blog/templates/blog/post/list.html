@@ -1,5 +1,5 @@
 ﻿{% extends "blog/base.html" %}
-
+{% load blog_tags %}
 {% block title %}My Blog{% endblock title %}
 
 {% block content %}
@@ -21,7 +21,7 @@
         <p class="date">
             Published {{ post.publish }} by {{ post.author }}
         </p>
-        {{ post.body|truncatewords:30|linebreaks }}
+{{ post.body|markdown|truncatewords_html:30 }}
     {% endfor %}
     
     {# 实现对分页器的重用 #}
