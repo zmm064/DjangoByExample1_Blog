@@ -48,9 +48,11 @@
     </Compile>
     <Compile Include="blog\views.py" />
     <Compile Include="blog\__init__.py" />
+    <Compile Include="DjangoByExample1_Blog\settings.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="manage.py" />
     <Compile Include="DjangoByExample1_Blog\__init__.py" />
-    <Compile Include="DjangoByExample1_Blog\settings.py" />
     <Compile Include="DjangoByExample1_Blog\urls.py" />
     <Compile Include="DjangoByExample1_Blog\wsgi.py" />
   </ItemGroup>
